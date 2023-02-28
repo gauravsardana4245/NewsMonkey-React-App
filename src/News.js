@@ -103,7 +103,7 @@ const News = (props) => {
           <div className="row my-3">
             {articles.map((element) => {
               return <div className="col-md-4 my-3 " key={element.url} >
-                <NewsItem title={element.title ? element.title.slice(0, 45) : ""} description={element.description ? element.description.slice(0, 88) : ""} imageUrl={element.urlToImage ? element.urlToImage : "https://www.deccanherald.com/sites/dh/files/articleimages/2022/11/08/youtube-shorts-on-smart-tv-1160438-1667904341.jpg"} newsUrl={element.url} author={element.author} publishedAt={element.publishedAt} source={element.source.name} />
+                <NewsItem title={element.title ? element.title.slice(0, 45) : ""} description={element.description ? element.description.slice(0, 88) : ""} imageUrl={element.urlToImage ? element.urlToImage : "https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_news_logo.png?20210712160907"} newsUrl={element.url} author={element.author} publishedAt={element.publishedAt} source={element.source.name} />
 
               </div>
 
