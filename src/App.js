@@ -1,5 +1,6 @@
 import {
   BrowserRouter as Router,
+  HashRouter,
   Routes,
   Route
 } from "react-router-dom";
@@ -24,7 +25,7 @@ const App = () => {
 
   return (
     <div style={{ display: "unset" }}>
-      <Router>
+      <HashRouter>
         <NavBar />
         <LoadingBar
           height={3}
@@ -43,7 +44,7 @@ const App = () => {
           <Route exact path="/technology" element={<News apiKey={apiKey} updateProgress={updateProgress} key="technology" country="in" pageSize={pageSize} category="technology" />} />
 
         </Routes>
-      </Router>
+      </HashRouter>
     </div>
 
   )
