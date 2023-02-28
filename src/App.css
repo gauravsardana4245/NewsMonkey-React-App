@@ -41,3 +41,10 @@
   align-items: center;
   justify-content: center;
 }
+nav{
+  position: fixed;
+  top: 0;
+}
+.logo{
+  font-size: 24px;
+}
