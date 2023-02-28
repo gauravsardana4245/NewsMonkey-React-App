@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import "/Users/gauravsardana/newsapp/src/App.css";
+
 // import {withRouter} from 'react-router';
 
 const NavBar = (props) => {
@@ -10,7 +10,7 @@ const NavBar = (props) => {
 
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <Link className="navbar-brand logo" to="/">NewsMonkey</Link>
+          <Link className="navbar-brand" style={{ fontSize: "24px" }} to="/">NewsMonkey</Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
