@@ -4,7 +4,7 @@ import Spinner from './Spinner';
 import PropTypes from 'prop-types'
 import InfiniteScroll from "react-infinite-scroll-component";
 
-const host = "http://localhost:5000/news";
+const host = "https://newsmonkey-backend.onrender.com/news";
 const News = (props) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
