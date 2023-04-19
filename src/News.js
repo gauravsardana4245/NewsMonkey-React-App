@@ -4,9 +4,7 @@ import Spinner from './Spinner';
 import PropTypes from 'prop-types'
 import InfiniteScroll from "react-infinite-scroll-component";
 
-
-
-
+const host = "http://localhost:5000/news";
 const News = (props) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -19,11 +17,15 @@ const News = (props) => {
   }
 
   const updateNews = useCallback(async () => {
-    props.updateProgress(10);
-    let url = `https://newsapi.org/v2/top-headlines?country=in&country=${props.country}&category=${props.category}&apikey=2f6e5d2c1f9a447fa0c57f1a88558a05&page=${page}&pagesize=${props.pageSize}`;
-    let data = await fetch(url);
+    const response = await fetch(host, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ country: props.country, category: props.category, page: page, pagesize: props.pageSize })
+    });
     props.updateProgress(30);
-    let parsedData = await data.json();
+    let parsedData = await response.json();
     props.updateProgress(70);
     console.log(parsedData);
     setArticles(articles.concat(parsedData.articles));
@@ -69,11 +71,16 @@ const News = (props) => {
   // }
   const fetchMoreData = async () => {
 
-    let url = `https://newsapi.org/v2/top-headlines?country=in&country=${props.country}&category=${props.category}&apikey=2f6e5d2c1f9a447fa0c57f1a88558a05&page=${page + 1}&pagesize=${props.pageSize}`;
+    const response = await fetch(host, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ country: props.country, category: props.category, page: page + 1, pagesize: props.pageSize })
+    });
     setPage(page + 1)
 
-    let data = await fetch(url);
-    let parsedData = await data.json();
+    let parsedData = await response.json();
     console.log(parsedData);
     setTimeout(() => {
       setArticles(articles.concat(parsedData.articles)); setTotalResults(parsedData.totalResults);
@@ -121,12 +128,14 @@ const News = (props) => {
 News.defaultProps = {
   country: "in",
   pageSize: "8",
+  page: 1,
   category: 'general'
 
 }
 News.propTypes = {
   country: PropTypes.string,
   pageSize: PropTypes.number,
+  page: PropTypes.number,
   category: PropTypes.string
 }
 
