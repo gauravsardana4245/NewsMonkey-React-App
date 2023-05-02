@@ -2,9 +2,12 @@ import React from 'react'
 
 const NewsItem = (props) => {
   let { title, description, imageUrl, newsUrl, author, publishedAt, source } = props;
+  const handleClick = () => {
+    window.open(newsUrl, '_blank');
+  }
   return (
     <div>
-      <div className="card" style={{ margin: "8px 0" }}>
+      <div onClick={handleClick} className="card" style={{ margin: "8px 0", cursor: "pointer" }}>
         <div style={{
           display: "flex",
           justifyContent: "flex-end",
@@ -26,7 +29,7 @@ const NewsItem = (props) => {
           <a href={newsUrl} target="noreferrer" className="btn btn-dark btn-sm">Read More</a>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

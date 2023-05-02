@@ -93,7 +93,7 @@ const News = (props) => {
   return (
 
     <>
-      <h1 className='text-center' style={{ margin: "35px 0px" }}> NewsMonkey - Top {`${capitalizeFirstLetter(props.category)}`} Headlines </h1>
+      <h1 className='text-center' style={{ margin: "35px 0px" }}> NewsMonkey - Top {`${capitalizeFirstLetter(props.category)}`} Headlines   </h1>
       <div className="text-center">
         {loading && <Spinner />}
       </div>
@@ -108,6 +108,7 @@ const News = (props) => {
       >
         <div className="container">
           <div className="row my-3">
+            {articles.length === 0 && <h3 style={{ textAlign: "center" }}> Loading...</h3>}
             {articles.map((element) => {
               return <div className="col-md-4 my-3 " key={element.url} >
                 <NewsItem title={element.title ? element.title.slice(0, 45) : ""} description={element.description ? element.description.slice(0, 88) : ""} imageUrl={element.urlToImage ? element.urlToImage : "https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_news_logo.png?20210712160907"} newsUrl={element.url} author={element.author} publishedAt={element.publishedAt} source={element.source.name} />
